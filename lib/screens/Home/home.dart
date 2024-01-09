@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/screens/home/home_body.dart';
 
 class Home extends StatefulWidget{
   const Home({super.key});
@@ -21,7 +22,7 @@ class _Home extends State<Home>{
         elevation: 0,
         backgroundColor: Colors.deepPurple.shade600
       ),
-      body: const Text("body"),
+      body: const HomeBody(),
       floatingActionButton: FloatingActionButton.large( 
         onPressed: (){},
         foregroundColor: Colors.white,
