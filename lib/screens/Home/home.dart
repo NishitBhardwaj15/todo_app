@@ -13,20 +13,22 @@ class _Home extends State<Home>{
   @override
   Widget build(BuildContext context) {
     return Scaffold( 
-      backgroundColor: Colors.amber.shade100,
+      backgroundColor:const Color.fromARGB(255, 234, 210, 239),
       appBar: AppBar( 
         title: const Center( 
           child: Text("Tasks"),
         ),
         elevation: 0,
-        backgroundColor: Colors.yellow
+        backgroundColor: Colors.deepPurple.shade600
       ),
       body: const Text("body"),
-      floatingActionButton: FloatingActionButton( 
+      floatingActionButton: FloatingActionButton.large( 
         onPressed: (){},
-        foregroundColor: Colors.black,
-        backgroundColor: Colors.yellow,
-        child: const Icon(Icons.add),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.deepPurple.shade600,
+        shape: const CircleBorder(),
+        child: const Icon(Icons.add)
+        
       ),
     );
   }
