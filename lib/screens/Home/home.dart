@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/screens/home/home_body.dart';
+import 'package:todo_app/screens/home/task_dialog.dart';
 
 class Home extends StatefulWidget{
   const Home({super.key});
@@ -24,12 +25,18 @@ class _Home extends State<Home>{
       ),
       body: const HomeBody(),
       floatingActionButton: FloatingActionButton.large( 
-        onPressed: (){},
+        onPressed: (){ 
+          showDialog(
+            context: context, 
+            builder: (ctx){
+              return TaskDialog(ctx);
+            } 
+          );
+        },
         foregroundColor: Colors.white,
         backgroundColor: Colors.deepPurple.shade600,
         shape: const CircleBorder(),
         child: const Icon(Icons.add)
-        
       ),
     );
   }

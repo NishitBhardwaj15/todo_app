@@ -18,19 +18,17 @@ class HomeCard extends StatelessWidget{
         ),
         borderRadius: const BorderRadius.all(Radius.circular(12)),
       ),
-      child: Row( 
+      child: const Row( 
         children: [ 
-          const Text("chekbox"),
-          Text(task.title),
-          const Column( 
+          Text("checkbox"),
+          Column( 
             children: [ 
-              Icon(Icons.timelapse_sharp),
-              Text("Hello")
+              Text("title"),
+              Text("date")
             ],
           )
         ],
-      ),
-      
+      )
     );
   }
 }
