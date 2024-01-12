@@ -13,22 +13,10 @@ class TaskDialog extends StatefulWidget{
 }
 
 class _TaskDialog extends State<TaskDialog>{
-  DateTime? _selectedDate;
   final _textController = TextEditingController();
 
-  void showCalender() async{
-    final pickedDate = await showDatePicker(context: context, 
-    firstDate: DateTime(2024), 
-    lastDate: DateTime(2025) 
-    );
-
-    setState(() {
-      _selectedDate = pickedDate;
-    });
-  }
-
   void newTask(){
-    if(_textController.text.trim().isEmpty || _selectedDate == null){
+    if(_textController.text.trim().isEmpty){
       ScaffoldMessenger.of(context).showSnackBar( 
         const SnackBar( 
           content: Text("Invalid data entry!"),
@@ -38,7 +26,7 @@ class _TaskDialog extends State<TaskDialog>{
       );
     }
     else{
-      widget.addNewTask(HomeModel(title: _textController.text, date: _selectedDate!));
+      widget.addNewTask(HomeModel(title: _textController.text));
     }
   }
 
@@ -63,11 +51,6 @@ class _TaskDialog extends State<TaskDialog>{
                   border: OutlineInputBorder()
                 ),
               ),
-              const Text("Due date"),
-              _selectedDate == null? IconButton.filled(
-                onPressed: showCalender, 
-                icon: const Icon(Icons.calendar_month) 
-                ):Text(formatter.format(_selectedDate!)),
             ],
           ),
         ),
