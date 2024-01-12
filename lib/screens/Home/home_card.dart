@@ -8,7 +8,7 @@ class HomeCard extends StatelessWidget{
   Widget build(BuildContext context) {
     return Card( 
       margin: const EdgeInsets.symmetric( 
-        horizontal: 20,
+        horizontal: 30,
         vertical: 10
       ),
       elevation: 0,
@@ -20,11 +20,11 @@ class HomeCard extends StatelessWidget{
       ),
       child: Row( 
         children: [ 
-          Text("checkbox"),
+          const Text("checkbox"),
           Column( 
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [ 
-              Text(task.title),
-              Text(task.formattedDate)
+              Text(task.title)
             ],
           )
         ],

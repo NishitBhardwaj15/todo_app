@@ -3,8 +3,12 @@ import 'package:todo_app/screens/home/home.dart';
 
 void main(){
   runApp( 
-    const MaterialApp( 
-      home: Home(),
+    MaterialApp( 
+      debugShowCheckedModeBanner: false,
+      home: const Home(),
+      theme: ThemeData(
+       primaryColor: Colors.yellow
+        ),
     )
   );
 }

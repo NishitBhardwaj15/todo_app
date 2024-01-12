@@ -8,13 +8,16 @@ class HomeBody extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return SizedBox( 
-      height: 700,
+      height: 680,
       width: double.infinity,
-      child: ListView.builder(
-        itemCount: listTasks.length,
-        itemBuilder:(constext,index){ 
-          return HomeCard(listTasks[index]);
-        }
+      child: Padding(
+        padding: const EdgeInsets.only(top: 20,bottom: 20),
+        child: ListView.builder(
+          itemCount: listTasks.length,
+          itemBuilder:(constext,index){ 
+            return HomeCard(listTasks[index]);
+          }
+        ),
       ),
     );
   }

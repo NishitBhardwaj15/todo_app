@@ -23,19 +23,19 @@ class _Home extends State<Home>{
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Scaffold( 
-      backgroundColor:const Color.fromARGB(255, 234, 210, 239),
+      backgroundColor: Colors.yellow[100],
       appBar: AppBar( 
-        toolbarHeight: 80,
+        backgroundColor: Theme.of(context).primaryColor,
         title: const Center( 
-          child: Text("Tasks"),
+          child: Text("TO DO"),
         ),
-        elevation: 0,
-        backgroundColor: Colors.deepPurple.shade600
+        elevation: 0
       ),
       body: HomeBody(listTasks),
       floatingActionButton: FloatingActionButton( 
+        backgroundColor: Theme.of(context).primaryColor,
         onPressed: (){ 
           showDialog(
             context: context, 
@@ -44,8 +44,6 @@ class _Home extends State<Home>{
             } 
           );
         },
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.deepPurple.shade600,
         shape: const CircleBorder(),
         child: const Icon(Icons.add)
       ),
