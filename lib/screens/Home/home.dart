@@ -22,6 +22,30 @@ class _Home extends State<Home>{
     });
   }
 
+  void removeTask(HomeModel homeModel){
+    final index = listTasks.indexOf(homeModel);
+
+    setState(() {
+      listTasks.remove(homeModel);
+    });
+
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar( 
+      SnackBar( 
+        duration: const Duration(seconds: 10),
+        content: const Text("Task deleted"),
+        action: SnackBarAction( 
+          label: "Undo", 
+          onPressed: (){ 
+            setState(() {
+              listTasks.insert(index, homeModel);
+            });
+          } 
+          ),
+      )
+    );
+  }
+
   @override
   Widget build(context) {
     return Scaffold( 
@@ -33,7 +57,7 @@ class _Home extends State<Home>{
         ),
         elevation: 0
       ),
-      body: HomeBody(listTasks),
+      body: HomeBody(listTasks,removeTask),
       floatingActionButton: FloatingActionButton( 
         backgroundColor: Theme.of(context).primaryColor,
         onPressed: (){ 
