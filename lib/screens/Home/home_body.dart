@@ -5,8 +5,9 @@ import 'package:todo_app/screens/home/model/home_model.dart';
 class HomeBody extends StatelessWidget{
   final List listTasks;
   final void Function(HomeModel homeModel) removeTask;
+  final void Function(HomeModel homeModel,bool? value) checkboxHandler;
 
-  const HomeBody(this.listTasks,this.removeTask,{super.key});
+  const HomeBody(this.listTasks,this.removeTask,this.checkboxHandler,{super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,10 @@ class HomeBody extends StatelessWidget{
       width: double.infinity,
       child: Padding(
         padding: const EdgeInsets.only(top: 20,bottom: 20),
-        child: ListView.builder(
+        child: listTasks.isEmpty? const Center( 
+          child: Text("No new task"),
+        ): 
+        ListView.builder(
           itemCount: listTasks.length,
           itemBuilder:(constext,index){ 
             return Dismissible( 
@@ -30,7 +34,7 @@ class HomeBody extends StatelessWidget{
               onDismissed: (DismissDirection direction) {
                 removeTask(listTasks[index]);
               },
-              child: HomeCard(listTasks[index]) 
+              child: HomeCard(listTasks[index],checkboxHandler) 
               );
           }
         ),

@@ -46,6 +46,12 @@ class _Home extends State<Home>{
     );
   }
 
+  void checkboxHandler(HomeModel homeModel,bool? value){
+    setState(() {
+      homeModel.isSelected = value!;
+    });
+  }
+
   @override
   Widget build(context) {
     return Scaffold( 
@@ -57,7 +63,7 @@ class _Home extends State<Home>{
         ),
         elevation: 0
       ),
-      body: HomeBody(listTasks,removeTask),
+      body: HomeBody(listTasks,removeTask,checkboxHandler),
       floatingActionButton: FloatingActionButton( 
         backgroundColor: Theme.of(context).primaryColor,
         onPressed: (){ 
