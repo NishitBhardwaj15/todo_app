@@ -38,36 +38,73 @@ class _TaskDialog extends State<TaskDialog>{
   
   @override
   Widget build(context) {
-    return AlertDialog( 
-      title: const Text("New Task"),
-      actions: [ 
-        SizedBox( 
-          child: Column( 
-            children: [ 
-              TextField( 
-                controller: _textController,
-                decoration: const InputDecoration( 
-                  labelText: "Task title",
-                  border: OutlineInputBorder()
-                ),
+    return 
+    AlertDialog(
+      shape: const RoundedRectangleBorder( 
+        borderRadius: BorderRadius.all( 
+          Radius.circular(0)
+        )
+      ),
+      backgroundColor: Colors.yellow[300],
+      content: SizedBox(
+        height: 200,
+        width: 300,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            TextField(
+              controller: _textController,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Add a new task",
               ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                MaterialButton(
+                  color: Theme.of(context).primaryColor,
+                  onPressed: (){
+                  newTask();
+                  Navigator.of(context).pop();
+                },  
+                  child: const Text("Save") 
+           ),
+                MaterialButton( 
+                  color: Theme.of(context).primaryColor,
+                  onPressed: (){
+                  Navigator.of(widget.ctx).pop();
+                },  
+                child: const Text("Cancel") 
+                )
+              ],
+            ),
+          ],
         ),
-        FilledButton( 
-          onPressed: (){
-            newTask();
-            Navigator.of(context).pop();
-          },  
-          child: const Text("Save") 
-          ),
-        FilledButton( 
-          onPressed: (){
-            Navigator.of(widget.ctx).pop();
-          },  
-          child: const Text("Cancel") 
-          )
-      ],
+      ),
     );
+
+
+    // AlertDialog( 
+    //   title: const Text("New Task"),
+    //   actions: [ 
+    //     SizedBox( 
+    //       child: Column( 
+    //         children: [ 
+    //           TextField( 
+    //             controller: _textController,
+    //             decoration: const InputDecoration( 
+    //               labelText: "Task title",
+    //               border: OutlineInputBorder()
+    //             ),
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //     
+    //     
+    //   ],
+    // );
   }
 }

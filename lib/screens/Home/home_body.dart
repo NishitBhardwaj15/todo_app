@@ -22,7 +22,8 @@ class HomeBody extends StatelessWidget{
               background: Container( 
                 color: Colors.red,
                 child: const Icon( 
-                  Icons.delete_forever_rounded, 
+                  Icons.delete_forever_rounded,
+                  size: 40, 
                   color: Colors.white,),
               ),
               key: ValueKey(listTasks[index]),

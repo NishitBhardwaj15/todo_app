@@ -10,6 +10,4 @@ class HomeModel {
   HomeModel({ 
     required this.title,
   }) : id = uuid.v4();
-
-  
 }
