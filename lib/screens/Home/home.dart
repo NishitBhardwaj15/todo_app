@@ -32,7 +32,7 @@ class _Home extends State<Home>{
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar( 
       SnackBar( 
-        duration: const Duration(seconds: 10),
+        duration: const Duration(seconds: 6),
         content: const Text("Task deleted"),
         action: SnackBarAction( 
           label: "Undo", 

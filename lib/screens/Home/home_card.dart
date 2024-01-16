@@ -27,6 +27,7 @@ class HomeCard extends StatelessWidget{
           children: [ 
             Checkbox( 
               value: task.isSelected, 
+              activeColor: Colors.black,
               onChanged: (newValue){
                 checkboxHandler(task,newValue);
                 } 
