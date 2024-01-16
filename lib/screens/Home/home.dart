@@ -3,6 +3,7 @@ import 'package:todo_app/screens/home/home_body.dart';
 import 'package:todo_app/screens/home/task_dialog.dart';
 import 'package:todo_app/data/home_data.dart';
 import 'package:todo_app/screens/home/model/home_model.dart';
+import 'package:hive/hive.dart';
 
 class Home extends StatefulWidget{
   const Home({super.key});
@@ -14,19 +15,40 @@ class Home extends StatefulWidget{
 }
 
 class _Home extends State<Home>{
-  final listTasks = List.of(tasks);
+  List<dynamic> taskList = [];
+
+  @override
+  void initState(){
+    super.initState();
+    initialzeList();
+  }
+
+  void initialzeList(){
+    Box box = Hive.box("taskBox");
+
+    if(box.containsKey("list")){
+      taskList = List.of(HomeData().updateList(box));
+    }
+    else{
+      HomeData().loadList(box);
+      print(box.path);
+    }
+
+  }
+
+  // final listTasks = List.of(tasks);
 
   void addNewTask(HomeModel homeModel){
     setState(() {
-      listTasks.add(homeModel);
+      taskList.add(homeModel);
     });
   }
 
   void removeTask(HomeModel homeModel){
-    final index = listTasks.indexOf(homeModel);
+    final index = taskList.indexOf(homeModel);
 
     setState(() {
-      listTasks.remove(homeModel);
+      taskList.remove(homeModel);
     });
 
     ScaffoldMessenger.of(context).clearSnackBars();
@@ -38,7 +60,7 @@ class _Home extends State<Home>{
           label: "Undo", 
           onPressed: (){ 
             setState(() {
-              listTasks.insert(index, homeModel);
+              taskList.insert(index, homeModel);
             });
           } 
           ),
@@ -63,7 +85,7 @@ class _Home extends State<Home>{
         ),
         elevation: 0
       ),
-      body: HomeBody(listTasks,removeTask,checkboxHandler),
+      body: HomeBody(taskList,removeTask,checkboxHandler),
       floatingActionButton: FloatingActionButton( 
         backgroundColor: Theme.of(context).primaryColor,
         onPressed: (){ 
